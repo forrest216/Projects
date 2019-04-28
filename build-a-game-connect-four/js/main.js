@@ -28,17 +28,29 @@ function handleClick(evt) {
     const rowIdx = board[colIdx].indexOf(0);
     if (rowIdx === -1) return;
     board[colIdx][rowIdx] = turn;
-    // TODO: winner = getWinner();
+    // winner = getWinner();
     turn *= -1;
     render();
 
-    console.log(colIdx);
-};
+}
+
+// function getWinner() {
+//     let win = null; //what does this look like with the local variable 'winner' called something else?
+//     for (let colIdx = 0; colIdx < board.length; colIdx++) {
+//         win = checkCol(colIdx);
+//         if (win) break;
+//     }
+//     return win;
+// }
+
+// function checkCol() {
+    
+// }
 
 function render() {
      // Display Board
     board.forEach(function(colArr, colIdx) {
-        // Update col markers
+        // Update col markers on all full
         const marker = document.getElementById(`col${colIdx}`);
         marker.style.borderTopColor = colArr.includes(0) ? 'deepskyblue' : '#333';
         colArr.forEach(function(cell, rowIdx) {
@@ -49,7 +61,7 @@ function render() {
     }) 
     
 
-     // Display message
+     // Update turn/win message
     if (winner) {
         if (winner = 'T') {
             msgEl.textContent = "It's a tie!";
