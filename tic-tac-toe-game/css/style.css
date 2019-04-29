@@ -366,23 +366,26 @@ body {
 
 h1 {
    font-size: 3.5vmin;
+   padding: 2vmin;
+   block-size: inherit;
 }
 
 section {
    display: grid;
-   grid-template-columns: repeat(3, 15vmin);
-   grid-template-rows: repeat(3, 15vmin);
-   grid-gap: 0;
+   grid-template-columns: repeat(3, 17vmin);
+   grid-template-rows: repeat(3, 17vmin);
+   /* grid-gap: 0; */
 }
 
 section div {
    border: #a8ffff solid 2px;
-   padding: 20px;
+   /* padding: 20px; */
 }
 
 img {
    max-width: 100%;
    max-height: 100%;
+   padding: 1vmin;
 }
 
 button {
