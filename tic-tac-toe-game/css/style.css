@@ -377,9 +377,9 @@ section {
    margin: auto;
 }
 
-section > div:nth-child(2) {
-  border-left: #a8ffff;
-  border-right: #a8ffff;
+section div:nth-child(3n+2) {
+  border-left: #a8ffff solid 2px;
+  border-right: #a8ffff solid 2px;
 }
 
 .middle {
