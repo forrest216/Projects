@@ -27,7 +27,7 @@ function tictac(evt) {
    const div = evt.target.parentElement.id.match(/\d+/g).map(Number);   // Outputs [row, col] of square clicked
    if (board[div[0]][div[1]] || winner) return;                         // Disables marker change in prev. clicked square and turn switch
    board[div[0]][div[1]] = turn;                                        // Array is updated with player value (1, -1) of clicked square
-   setTrans();                                                          // Sets values into a transverse 2D array from 'board' - for vert check
+   setTrans();
    winner = getWinner();                                                 // Sets winner var to value returned by getWinner()
    turn *= -1;                                                            // Turn switches
    render();
@@ -41,14 +41,20 @@ function getWinner() {
          return board[i][i];
       }
    };
-   if (Math.abs(board[0][0] + board[1][1] + board[2][2]) === 3) {                // Diagonal checks
-      return board[0][0];                                                        // 
-   } else if (Math.abs(board[2][0] + board[1][1] + board[0][2]) === 3) {         // Diagonal checks
-      return board[2][0];                                                        //
-   } else if (board.flat().includes(null)) {                                     // Checks for empty spaces on board (keep playing)
+   // (Math.abs(board[0][0] + board[1][1] + board[2][2]) === 3)
+   //    ? return board[0][0]
+   //    : (Math.abs(board[2][0] + board[1][1] + board[0][2]) === 3)    // Clean this up/ Ternary
+   //       ? board[2][0]
+   //       : (board.flat().includes(null))
+   //          ? null : 'T';
+   if (Math.abs(board[0][0] + board[1][1] + board[2][2]) === 3) {
+      return board[0][0];
+   } else if (Math.abs(board[2][0] + board[1][1] + board[0][2]) === 3) {      // Clean this up/ Ternary
+      return board[2][0];
+   } else if (board.flat().includes(null)) {
       return null;
    } else {
-      return 'T';                                                                // Tie
+      return 'T';
    }
 }
 
@@ -78,7 +84,7 @@ function init() {
       [null, null, null],
    ];
    winner = null;
-   turn = 1;
+   turn = -1;
    render();
 };
 /*

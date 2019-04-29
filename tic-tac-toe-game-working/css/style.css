@@ -367,24 +367,19 @@ body {
 h1 {
    font-size: 3.5vmin;
    padding: 2vmin;
-   margin: auto;
+   block-size: inherit;
 }
 
 section {
    display: grid;
-   grid-template-columns: repeat(3, 18vmin);
-   grid-template-rows: repeat(3, 18vmin);
-   margin: auto;
+   grid-template-columns: repeat(3, 17vmin);
+   grid-template-rows: repeat(3, 17vmin);
+   /* grid-gap: 0; */
 }
 
-section > div:nth-child(2) {
-  border-left: #a8ffff;
-  border-right: #a8ffff;
-}
-
-.middle {
-   border-top: #a8ffff solid 2px;
-   border-bottom: #a8ffff solid 2px;
+section div {
+   border: #a8ffff solid 2px;
+   /* padding: 20px; */
 }
 
 img {
@@ -398,6 +393,6 @@ button {
    border: #a8ffff solid 4px;
    color: #a8ffff;
    padding: 10px;
-   margin: auto;
+   margin: 40px;
    font-size: 30px;
 }
