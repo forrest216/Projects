@@ -42,46 +42,46 @@ function getWinner() {
       } else if (Math.abs(trans[i].reduce((x, y) => x + y)) === 3) {
          return board[i][i]
       }
-      }
-      if (Math.abs(board[0][0] + board[1][1] + board[2][2]) === 3) {
-         return board[0][0];
-      } else if (Math.abs(board[2][0] + board[1][1] + board[0][2]) === 3) {
-         return board[2][0];
-      } else if (board.flat().includes(null)) {
-         return null;
-      } else {
-         return 'T';
-      }
    }
+   if (Math.abs(board[0][0] + board[1][1] + board[2][2]) === 3) {
+      return board[0][0];
+   } else if (Math.abs(board[2][0] + board[1][1] + board[0][2]) === 3) {
+      return board[2][0];
+   } else if (board.flat().includes(null)) {
+      return null;
+   } else {
+      return 'T';
+   }
+}
 
-   function render() {
-      board.forEach((row, rIdx) => {
-         row.forEach((divIdx, cIdx) => {
-            document.getElementById(`r${rIdx}c${cIdx}`).innerHTML = MARKERS[divIdx];
-         });
+function render() {
+   board.forEach((row, rIdx) => {
+      row.forEach((divIdx, cIdx) => {
+         document.getElementById(`r${rIdx}c${cIdx}`).innerHTML = MARKERS[divIdx];
       });
-      if (winner == 'T') {
-         msgEl.innerHTML = 'HELLO<br><br>A STRANGE GAME.<br>THE ONLY WINNING MOVE IS<br>NOT TO PLAY.<br><br>HOW ABOUT A NICE GAME OF CHESS?';
-         butEl.innerHTML = `THERE IS NO WINNER<BR>PLAY AGAIN?`;
-      } else if (winner) {
-         msgEl.innerHTML = 'HELLO<br><br>A STRANGE GAME.<br>THE ONLY WINNING MOVE IS<br>NOT TO PLAY.<br><br>HOW ABOUT A NICE GAME OF CHESS?';
-         butEl.innerHTML = `${PLAYERS[turn * -1]} HAS CHEATED<BR>PLAY AGAIN?`;
-      } else {
-         msgEl.innerHTML = `${PLAYERS[turn]}'s TURN`;
-         butEl.innerHTML = `PLAY AGAIN`;
-      };
-   }
-
-   function init() {
-      board = [
-         [null, null, null],
-         [null, null, null],
-         [null, null, null],
-      ];
-      winner = null;
-      turn = 1;
-      render();
+   });
+   if (winner == 'T') {
+      msgEl.innerHTML = 'HELLO<br><br>A STRANGE GAME.<br>THE ONLY WINNING MOVE IS<br>NOT TO PLAY.<br><br>HOW ABOUT A NICE GAME OF CHESS?';
+      butEl.innerHTML = `THERE IS NO WINNER<BR>PLAY AGAIN?`;
+   } else if (winner) {
+      msgEl.innerHTML = 'HELLO<br><br>A STRANGE GAME.<br>THE ONLY WINNING MOVE IS<br>NOT TO PLAY.<br><br>HOW ABOUT A NICE GAME OF CHESS?';
+      butEl.innerHTML = `${PLAYERS[turn * -1]} HAS CHEATED<BR>PLAY AGAIN?`;
+   } else {
+      msgEl.innerHTML = `${PLAYERS[turn]}'s TURN`;
+      butEl.innerHTML = `PLAY AGAIN`;
    };
+}
+
+function init() {
+   board = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+   ];
+   winner = null;
+   turn = 1;
+   render();
+};
 /*
 // Want:
 // Mouseover border styling(or?)
