@@ -74,25 +74,18 @@
       5.5.2) 'win' = WINFUNCTION, defined below.
    5.6) Render().
 
-<!--WINFUNCTION-->Job: evaluate 'play' array and return a 'win' to a value for the RENDER function to manage.
-6.) Check for a win and update the win variable:
+<!--WINFUNCTION-->Job: evaluate 'play' array and return a value "win" for the RENDER function to manage. 1, BOOM, or 'null'
+6.) Check for a win condition and update the 'win' variable:
    /// Mines[index] value has just been entered into 'play' array in the click handler.
-   -How to handle edges
-
-   6.1) Iterate through the 'play' array searching for 0 values that have a 'null' value in a surrounding square. This represents the beginning of propagation.
+   --How to handle edges
+   --
+   6.1) Iterate through the 'play' array searching for 'X'. If an 'X' is found, return BOOM. Ya lost.
+   Else:
+   6.2) If the number of null values in the 'play' array === the number of 'X' values in the 'mines' array, return '1' <-----WIN CONDITION
+   Else:
+   6.3) Iterate through the 'play' array searching for 0 values that have a 'null' value in a surrounding square. This represents the beginning of propagation.
       6.1.1) The value of the 'play' array at the index of each 'null' returned is updated with the correspoding value from the 'mines' array.
-      6.1.2) The iteration runs again. Any 0 values with surrounding 'null' values are updated from the 'mines' array. Repeat until no 0 values are found. RETURN 'null'.
-
- If the value is 0, all unplayed squares surrounding that one are exposed, propagating across the board until no more 0 values are encountered by the game logic in the 'win' function.
-   8x8: 
-      
-   ) If the number of null values in the 'play' array === the number of 'X' values in the 'mines' array: 
-   .1) Return '1' <-----WIN CONDITION
-   If mines[index] has a value of 'X', the game is lost.
-   6.6) Update the 'play' array with the values of all newly exposed squares.
-
-   6.8) All state has been updated, so render the state to the page (step 4.2).
-      
+      6.1.2) The iteration runs again. Any 0 values with surrounding 'null' values are updated from the 'mines' array. Repeat until no 0 values are found meeting the criteria. RETURN 'null'.
 
 7) Handle a player clicking the replay button:
    7.1) Do steps 4.1 (initialize the state variables and board into HTML) and 4.2 (render).
